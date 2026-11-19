@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">StudyLock</string>
+    <string name="accessibility_service_description">StudyLock Guard - Blocks notification shade and status bar bypasses during active locked study sessions.</string>
+</resources>

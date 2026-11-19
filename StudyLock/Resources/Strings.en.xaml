@@ -1,0 +1,174 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!-- App Identity -->
+    <sys:String x:Key="AppTitle">StudyLock</sys:String>
+    <sys:String x:Key="AppSubtitle">Smart Focus Lock &amp; Child-Safe Workspace</sys:String>
+    <sys:String x:Key="ToggleLanguageLabel">العربية</sys:String>
+    <sys:String x:Key="ThemeDarkLabel">🌙 Dark</sys:String>
+    <sys:String x:Key="ThemeLightLabel">☀️ Light</sys:String>
+    <sys:String x:Key="ParentPinSettingsBtn">🔐 Parent Gate Settings</sys:String>
+    <sys:String x:Key="DiscordBtnLabel">Discord Server</sys:String>
+    <sys:String x:Key="DiscordCreditsSub">© A-2Q • Join Community</sys:String>
+
+    <!-- Navigation Tabs -->
+    <sys:String x:Key="TabStudyMode">Study Mode</sys:String>
+    <sys:String x:Key="TabChildMode">Child Mode</sys:String>
+    <sys:String x:Key="TabStatistics">Statistics &amp; Progress</sys:String>
+
+    <!-- Study Mode Dashboard -->
+    <sys:String x:Key="StudyHeaderTitle">Configure Locked Study Session</sys:String>
+    <sys:String x:Key="StudyHeaderDesc">Set your primary learning platform, optional local PDF textbooks, and lock strength for distraction-free focus.</sys:String>
+    <sys:String x:Key="StudyUrlLabel">Primary Study Website URL (Required)</sys:String>
+    <sys:String x:Key="StudyUrlPlaceholder">https://www.khanacademy.org</sys:String>
+    <sys:String x:Key="PreviewBeforeLockBtn">Preview &amp; Sign In</sys:String>
+    <sys:String x:Key="SavedStudySitesLabel">Saved Shortcuts</sys:String>
+    <sys:String x:Key="AddSiteBtn">+ Add Site</sys:String>
+    <sys:String x:Key="AttachedPdfsLabel">Attached Local PDFs (Optional — Open side-by-side inside Lock)</sys:String>
+    <sys:String x:Key="AddPdfBtn">+ Attach PDF</sys:String>
+    <sys:String x:Key="NoPdfsAttached">No PDFs attached yet — add local study books or sheets to access them offline inside the lock.</sys:String>
+    <sys:String x:Key="DurationLabel">Session Duration (Max 5 Hours)</sys:String>
+    <sys:String x:Key="CustomMinutesLabel">Or custom minutes:</sys:String>
+    <sys:String x:Key="LockLevelLabel">Lock Protection Level</sys:String>
+    <sys:String x:Key="StandardLevelTitle">Level 1 — Standard</sys:String>
+    <sys:String x:Key="StandardLevelDesc">Fullscreen lock, secondary monitor blackout, shortcut blocking, no UAC prompt. Ends when timer completes or via Emergency Exit.</sys:String>
+    <sys:String x:Key="StrictLevelTitle">Level 2 — Strict</sys:String>
+    <sys:String x:Key="StrictLevelDesc">All Standard features + automatic Admin elevation to terminate Task Manager + encrypted recovery state + mandatory auto-resume after reboot.</sys:String>
+    <sys:String x:Key="StartStudyLockBtn">Start Study Session &amp; Lock Screen</sys:String>
+
+    <!-- Duration Chips -->
+    <sys:String x:Key="Chip5m">5m</sys:String>
+    <sys:String x:Key="Chip15m">15m</sys:String>
+    <sys:String x:Key="Chip30m">30m</sys:String>
+    <sys:String x:Key="Chip1h">1h</sys:String>
+    <sys:String x:Key="Chip2h">2h</sys:String>
+    <sys:String x:Key="Chip3h">3h</sys:String>
+    <sys:String x:Key="Chip4h">4h</sys:String>
+    <sys:String x:Key="Chip5h">5h</sys:String>
+
+    <!-- Child Mode Dashboard -->
+    <sys:String x:Key="ChildHeaderTitle">Safe Child Workspace</sys:String>
+    <sys:String x:Key="ChildHeaderDesc">Pick an approved website and play duration. External links and popups are silently blocked, and exiting requires the Parent Gate.</sys:String>
+    <sys:String x:Key="ChildSitesGridLabel">Choose an Approved Site</sys:String>
+    <sys:String x:Key="AddChildSiteBtn">+ Add New Site</sys:String>
+    <sys:String x:Key="ChildDurationLabel">Play / Watch Duration</sys:String>
+    <sys:String x:Key="StartChildLockBtn">Activate Child Mode &amp; Lock Device</sys:String>
+
+    <!-- Statistics Tab -->
+    <sys:String x:Key="StatsHeaderTitle">Statistics &amp; Achievements</sys:String>
+    <sys:String x:Key="StatsHeaderDesc">Track your daily and weekly study hours, Anti-AFK focus response speed, and saved session notes.</sys:String>
+    <sys:String x:Key="StatTodayHours">Today</sys:String>
+    <sys:String x:Key="StatWeekHours">This Week</sys:String>
+    <sys:String x:Key="StatTotalHours">All-Time Total</sys:String>
+    <sys:String x:Key="StatAvgAfk">Avg Check-In Speed</sys:String>
+    <sys:String x:Key="SessionHistoryTitle">Completed Sessions History</sys:String>
+    <sys:String x:Key="NoHistoryYet">No sessions recorded yet. Complete your first study session to track your progress here!</sys:String>
+    <sys:String x:Key="ColDate">Date</sys:String>
+    <sys:String x:Key="ColSite">Website</sys:String>
+    <sys:String x:Key="ColDuration">Studied</sys:String>
+    <sys:String x:Key="ColAfkSpeed">Check-In Avg</sys:String>
+    <sys:String x:Key="ColStatus">Status</sys:String>
+    <sys:String x:Key="ColNotes">Notes</sys:String>
+    <sys:String x:Key="ViewNotesBtn">View Notes</sys:String>
+    <sys:String x:Key="StatusCompleted">Completed</sys:String>
+    <sys:String x:Key="StatusEmergency">Emergency Exit</sys:String>
+
+    <!-- Study Lock Workspace -->
+    <sys:String x:Key="RemainingTimeLabel">Remaining</sys:String>
+    <sys:String x:Key="NextCheckLabel">Next Check-In</sys:String>
+    <sys:String x:Key="PauseTimerBtn">⏸ Pause</sys:String>
+    <sys:String x:Key="ResumeTimerBtn">▶ Resume Study</sys:String>
+    <sys:String x:Key="PausedBadge">Paused — No Penalty</sys:String>
+    <sys:String x:Key="SplitViewBtn">◫ Split View</sys:String>
+    <sys:String x:Key="SingleViewBtn">▢ Full View</sys:String>
+    <sys:String x:Key="QuickNotesBtn">📝 Notes</sys:String>
+    <sys:String x:Key="CalculatorBtn">🧮 Calc</sys:String>
+    <sys:String x:Key="WifiBtn">📶 Wi-Fi</sys:String>
+    <sys:String x:Key="EmergencyExitBtn">Emergency Exit</sys:String>
+    <sys:String x:Key="GraceBannerText">Grace period to verify your site loaded properly before the lock seals:</sys:String>
+    <sys:String x:Key="CancelStartBtn">Cancel Start</sys:String>
+    <sys:String x:Key="LockNowBtn">Seal Lock Now</sys:String>
+    <sys:String x:Key="AntiAfkBannerTitle">15-Minute Presence Check</sys:String>
+    <sys:String x:Key="AntiAfkBannerActive">Still studying? Click below within the grace window to keep your timer running:</sys:String>
+    <sys:String x:Key="AntiAfkBannerFrozen">Timer paused fairly (no penalty) due to inactivity — click below to resume:</sys:String>
+    <sys:String x:Key="IAmStudyingBtn">✓ I Am Studying Now</sys:String>
+    <sys:String x:Key="BlockedDomainToast">Navigation outside the allowed study domain was blocked.</sys:String>
+    <sys:String x:Key="LeftPaneLabel">Left Pane:</sys:String>
+    <sys:String x:Key="RightPaneLabel">Right Pane:</sys:String>
+    <sys:String x:Key="SessionCompletedTitle">Well Done! Study Session Complete 🎉</sys:String>
+    <sys:String x:Key="SessionCompletedDesc">Your progress and notes have been saved to Statistics. You may now return to the dashboard.</sys:String>
+    <sys:String x:Key="ReturnToDashboardBtn">Return to Dashboard</sys:String>
+
+    <!-- Child Lock Workspace -->
+    <sys:String x:Key="ChildBackBtn">Back</sys:String>
+    <sys:String x:Key="ChildHomeBtn">Home</sys:String>
+    <sys:String x:Key="ChildParentExitBtn">🔒 Parent Exit</sys:String>
+    <sys:String x:Key="ChildTimeUpTitle">Screen Time Is Up!</sys:String>
+    <sys:String x:Key="ChildTimeUpSubtitle">Please hand the device back to a parent to unlock.</sys:String>
+    <sys:String x:Key="ChildUnlockParentBtn">Unlock via Parent Gate</sys:String>
+
+    <!-- Blackout Screen -->
+    <sys:String x:Key="BlackoutTitle">StudyLock</sys:String>
+    <sys:String x:Key="BlackoutSubtitle">Secondary monitor blacked out for distraction-free focus</sys:String>
+
+    <!-- Parent Gate Dialog -->
+    <sys:String x:Key="ParentGateTitle">Parent Exit Gate</sys:String>
+    <sys:String x:Key="ParentGateMathSubtitle">Solve this quick math expression to exit Child Mode:</sys:String>
+    <sys:String x:Key="ParentGatePinSubtitle">Enter your Parent PIN to exit Child Mode:</sys:String>
+    <sys:String x:Key="ParentGateVerifyBtn">Verify &amp; Unlock</sys:String>
+    <sys:String x:Key="ParentGateCancelBtn">Cancel</sys:String>
+    <sys:String x:Key="ParentGateWrongAnswer">Incorrect answer! Attempts remaining before lockout:</sys:String>
+    <sys:String x:Key="ParentGateLockedOut">Input locked for 2 minutes to prevent guessing. Time remaining:</sys:String>
+
+    <!-- Emergency Exit Dialog -->
+    <sys:String x:Key="EmergencyTitle">Emergency Exit Confirmation</sys:String>
+    <sys:String x:Key="EmergencyDesc">To leave before your session ends, type the exact 55-character random code below. Copy and paste are disabled.</sys:String>
+    <sys:String x:Key="EmergencyInputPlaceholder">Type the full 55-character code here...</sys:String>
+    <sys:String x:Key="EmergencyConfirmBtn">Confirm Emergency Exit</sys:String>
+    <sys:String x:Key="EmergencyBackBtn">Back to Studying</sys:String>
+    <sys:String x:Key="EmergencyPasteBlocked">Pasting is disabled in Emergency Exit!</sys:String>
+
+    <!-- Preview Browser -->
+    <sys:String x:Key="PreviewTitle">Pre-Lock Preview &amp; Sign In</sys:String>
+    <sys:String x:Key="PreviewHint">Sign into your account and confirm the page loads properly — your login session is persisted automatically.</sys:String>
+    <sys:String x:Key="PreviewConfirmStartBtn">Confirm &amp; Start Lock Now</sys:String>
+    <sys:String x:Key="PreviewCloseBtn">Close &amp; Back</sys:String>
+
+    <!-- Floating Tools -->
+    <sys:String x:Key="NotesTitle">Quick Study Notes</sys:String>
+    <sys:String x:Key="NotesAutoSaveHint">Auto-saved and attached to this session in Statistics</sys:String>
+    <sys:String x:Key="CalcTitle">Calculator</sys:String>
+    <sys:String x:Key="WifiTitle">Built-In Wi-Fi Switcher</sys:String>
+    <sys:String x:Key="WifiRefreshBtn">Refresh Networks</sys:String>
+    <sys:String x:Key="WifiConnectBtn">Connect</sys:String>
+    <sys:String x:Key="WifiPasswordPrompt">Network Password:</sys:String>
+    <sys:String x:Key="WifiConnectedBadge">Connected</sys:String>
+    <sys:String x:Key="WifiScanning">Scanning nearby Wi-Fi networks...</sys:String>
+
+    <!-- Dialogs & Validation -->
+    <sys:String x:Key="AddPresetTitle">Add New Site</sys:String>
+    <sys:String x:Key="EditPresetTitle">Edit Site</sys:String>
+    <sys:String x:Key="PresetNameLabel">Site Name</sys:String>
+    <sys:String x:Key="PresetUrlLabel">Website URL</sys:String>
+    <sys:String x:Key="PresetIconLabel">Icon</sys:String>
+    <sys:String x:Key="PresetColorLabel">Card Accent Color</sys:String>
+    <sys:String x:Key="SaveBtn">Save</sys:String>
+    <sys:String x:Key="CancelBtn">Cancel</sys:String>
+    <sys:String x:Key="DeleteBtn">Delete</sys:String>
+    <sys:String x:Key="CopyBtn">Copy</sys:String>
+    <sys:String x:Key="ExportTxtBtn">Export .txt</sys:String>
+    <sys:String x:Key="CloseBtn">Close</sys:String>
+    <sys:String x:Key="InvalidUrlError">Please enter a valid website URL (e.g. https://example.com).</sys:String>
+    <sys:String x:Key="SelectChildSiteError">Please select an approved site for Child Mode first.</sys:String>
+    <sys:String x:Key="InvalidDurationError">Please choose a valid duration between 1 and 300 minutes (5 hours max).</sys:String>
+    <sys:String x:Key="UacDeclinedError">Administrator permission was not granted for Strict Mode. You can use Standard Mode or try again.</sys:String>
+    <sys:String x:Key="PinSettingsTitle">Parent Gate Settings</sys:String>
+    <sys:String x:Key="PinSettingsDesc">By default, Parent Gate uses easy tens &amp; fives math challenges. You can optionally enable a Parent PIN (4–8 digits) for older children.</sys:String>
+    <sys:String x:Key="EnablePinCheckbox">Enable Parent PIN instead of Math Challenge</sys:String>
+    <sys:String x:Key="NewPinLabel">New Parent PIN (4–8 digits):</sys:String>
+    <sys:String x:Key="ConfirmPinLabel">Confirm Parent PIN:</sys:String>
+    <sys:String x:Key="PinValidationError">PIN must be 4 to 8 digits and match in both fields.</sys:String>
+    <sys:String x:Key="HoursUnit">hrs</sys:String>
+    <sys:String x:Key="SecondsUnit">sec</sys:String>
+</ResourceDictionary>

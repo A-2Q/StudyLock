@@ -1,0 +1,21 @@
+# Flutter & Dart build artifacts
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+build/
+.pub-cache/
+.pub/
+
+# Android build artifacts & local properties
+android/.gradle/
+android/local.properties
+android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java
+android/app/build/
+android/gradle/
+android/gradlew
+android/gradlew.bat
+
+# Symbol files & logs
+*.apk
+*.aab
+*.log

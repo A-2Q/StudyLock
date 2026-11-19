@@ -1,0 +1,31 @@
+<Window x:Class="StudyLock.Views.BlackoutWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        WindowStyle="None"
+        Icon="pack://application:,,,/Assets/app.ico"
+        ResizeMode="NoResize"
+        ShowInTaskbar="False"
+        Topmost="True"
+        AllowsTransparency="False"
+        Background="#050608"
+        Closing="Window_Closing">
+    <Grid Background="#050608">
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Opacity="0.38">
+            <Border Width="76" Height="76" CornerRadius="18" Background="#F4F7FB" Padding="10" HorizontalAlignment="Center" Margin="0,0,0,14">
+                <Image Source="pack://application:,,,/Assets/logo.png"
+                       RenderOptions.BitmapScalingMode="HighQuality"
+                       Stretch="Uniform" />
+            </Border>
+            <TextBlock Text="{DynamicResource BlackoutTitle}"
+                       FontSize="24"
+                       FontWeight="Bold"
+                       Foreground="#F59E0B"
+                       HorizontalAlignment="Center"
+                       Margin="0,0,0,6" />
+            <TextBlock Text="{DynamicResource BlackoutSubtitle}"
+                       FontSize="14"
+                       Foreground="#9CA3AF"
+                       HorizontalAlignment="Center" />
+        </StackPanel>
+    </Grid>
+</Window>

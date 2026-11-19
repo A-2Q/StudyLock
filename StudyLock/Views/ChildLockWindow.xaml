@@ -1,0 +1,128 @@
+<Window x:Class="StudyLock.Views.ChildLockWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:wv2="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
+        WindowStyle="None"
+        Icon="pack://application:,,,/Assets/app.ico"
+        WindowState="Maximized"
+        ResizeMode="NoResize"
+        Topmost="True"
+        ShowInTaskbar="False"
+        Background="{DynamicResource BgCanvasBrush}"
+        Closing="Window_Closing">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!-- Minimal Kid-Friendly Top Bar -->
+        <Border Grid.Row="0"
+                Background="{DynamicResource BgSurface1Brush}"
+                BorderBrush="{DynamicResource BorderSubtleBrush}"
+                BorderThickness="0,0,0,1"
+                Padding="16,10">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <!-- Back & Home Only -->
+                <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center">
+                    <Button Style="{StaticResource SecondaryButtonStyle}"
+                            Padding="14,8"
+                            Margin="0,0,8,0"
+                            Click="BackButton_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="↩" Margin="0,0,6,0" />
+                            <TextBlock Text="{DynamicResource ChildBackBtn}" />
+                        </StackPanel>
+                    </Button>
+                    <Button Style="{StaticResource SecondaryButtonStyle}"
+                            Padding="14,8"
+                            Click="HomeButton_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="🏠" Margin="0,0,6,0" />
+                            <TextBlock Text="{DynamicResource ChildHomeBtn}" />
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+
+                <!-- Site Title & Remaining Time -->
+                <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock x:Name="SiteNameText"
+                               FontSize="15"
+                               FontWeight="Bold"
+                               Foreground="{DynamicResource TextPrimaryBrush}"
+                               VerticalAlignment="Center"
+                               Margin="0,0,16,0" />
+                    <Border Background="{DynamicResource AccentSubtleBrush}"
+                            BorderBrush="{DynamicResource BorderAccentBrush}"
+                            BorderThickness="1"
+                            CornerRadius="10"
+                            Padding="14,6">
+                        <TextBlock x:Name="CountdownText"
+                                   FlowDirection="LeftToRight"
+                                   FontFamily="{StaticResource MonoFont}"
+                                   FontSize="20"
+                                   FontWeight="Bold"
+                                   Foreground="{DynamicResource AccentPrimaryBrush}"
+                                   Text="00:30:00" />
+                    </Border>
+                </StackPanel>
+
+                <!-- Subtle Parent Exit Button -->
+                <Button Grid.Column="2"
+                        Style="{StaticResource GhostButtonStyle}"
+                        FontSize="12"
+                        Opacity="0.82"
+                        Content="{DynamicResource ChildParentExitBtn}"
+                        Click="ParentExitButton_Click" />
+            </Grid>
+        </Border>
+
+        <!-- Isolated Child WebView2 -->
+        <wv2:WebView2 x:Name="ChildWebView" Grid.Row="1" />
+
+        <!-- Calm Time-Up Overlay (WebView collapses when this appears) -->
+        <Grid x:Name="TimeUpOverlay"
+              Grid.Row="1"
+              Visibility="Collapsed"
+              Background="{DynamicResource BgCanvasBrush}">
+            <Border Background="{DynamicResource BgSurface1Brush}"
+                    BorderBrush="{DynamicResource BorderAccentBrush}"
+                    BorderThickness="1.5"
+                    CornerRadius="24"
+                    Padding="44,38"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    MaxWidth="560">
+                <StackPanel HorizontalAlignment="Center">
+                    <TextBlock Text="🌙✨"
+                               FontSize="54"
+                               HorizontalAlignment="Center"
+                               Margin="0,0,0,16" />
+                    <TextBlock Text="{DynamicResource ChildTimeUpTitle}"
+                               FontSize="28"
+                               FontWeight="Bold"
+                               Foreground="{DynamicResource AccentPrimaryBrush}"
+                               TextAlignment="Center"
+                               Margin="0,0,0,10" />
+                    <TextBlock Text="{DynamicResource ChildTimeUpSubtitle}"
+                               FontSize="16"
+                               Foreground="{DynamicResource TextSecondaryBrush}"
+                               TextAlignment="Center"
+                               TextWrapping="Wrap"
+                               Margin="0,0,0,28" />
+                    <Button Style="{StaticResource PrimaryButtonStyle}"
+                            Padding="26,13"
+                            FontSize="15"
+                            Content="{DynamicResource ChildUnlockParentBtn}"
+                            Click="ParentExitButton_Click" />
+                </StackPanel>
+            </Border>
+        </Grid>
+    </Grid>
+</Window>

@@ -1,0 +1,89 @@
+<Window x:Class="StudyLock.Views.ParentPinSettingsDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Width="440"
+        SizeToContent="Height"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="NoResize"
+        ShowInTaskbar="False">
+    <Border Background="{DynamicResource BgSurface1Brush}"
+            BorderBrush="{DynamicResource BorderAccentBrush}"
+            BorderThickness="1.3"
+            CornerRadius="18"
+            Padding="24"
+            Margin="12">
+        <Border.Effect>
+            <DropShadowEffect Color="#000000" BlurRadius="24" ShadowDepth="6" Opacity="0.45" />
+        </Border.Effect>
+        <StackPanel>
+            <TextBlock Text="{DynamicResource PinSettingsTitle}"
+                       FontSize="18"
+                       FontWeight="Bold"
+                       Foreground="{DynamicResource TextPrimaryBrush}"
+                       Margin="0,0,0,8" />
+            <TextBlock Text="{DynamicResource PinSettingsDesc}"
+                       FontSize="12.5"
+                       Foreground="{DynamicResource TextSecondaryBrush}"
+                       TextWrapping="Wrap"
+                       Margin="0,0,0,16" />
+
+            <CheckBox x:Name="EnablePinCheckBox"
+                      Content="{DynamicResource EnablePinCheckbox}"
+                      Foreground="{DynamicResource TextPrimaryBrush}"
+                      FontWeight="SemiBold"
+                      FontSize="13.5"
+                      Margin="0,0,0,14"
+                      Checked="EnablePinCheckBox_Changed"
+                      Unchecked="EnablePinCheckBox_Changed" />
+
+            <StackPanel x:Name="PinFieldsPanel" Visibility="Collapsed">
+                <TextBlock Text="{DynamicResource NewPinLabel}"
+                           FontSize="12.5"
+                           Foreground="{DynamicResource TextSecondaryBrush}"
+                           Margin="0,0,0,6" />
+                <PasswordBox x:Name="NewPinBox"
+                             Style="{StaticResource ModernPasswordBoxStyle}"
+                             FlowDirection="LeftToRight"
+                             MaxLength="8"
+                             Margin="0,0,0,12" />
+
+                <TextBlock Text="{DynamicResource ConfirmPinLabel}"
+                           FontSize="12.5"
+                           Foreground="{DynamicResource TextSecondaryBrush}"
+                           Margin="0,0,0,6" />
+                <PasswordBox x:Name="ConfirmPinBox"
+                             Style="{StaticResource ModernPasswordBoxStyle}"
+                             FlowDirection="LeftToRight"
+                             MaxLength="8"
+                             Margin="0,0,0,12" />
+            </StackPanel>
+
+            <TextBlock x:Name="ErrorText"
+                       Visibility="Collapsed"
+                       Foreground="{DynamicResource DangerBrush}"
+                       FontSize="12.5"
+                       FontWeight="SemiBold"
+                       TextWrapping="Wrap"
+                       Margin="0,0,0,10" />
+
+            <Grid Margin="0,6,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="12" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="0"
+                        Style="{StaticResource PrimaryButtonStyle}"
+                        Content="{DynamicResource SaveBtn}"
+                        Click="SaveButton_Click" />
+                <Button Grid.Column="2"
+                        Style="{StaticResource SecondaryButtonStyle}"
+                        Content="{DynamicResource CancelBtn}"
+                        Click="CancelButton_Click" />
+            </Grid>
+        </StackPanel>
+    </Border>
+</Window>

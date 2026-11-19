@@ -1,0 +1,36 @@
+# .NET & Visual Studio build artifacts
+bin/
+obj/
+publish/
+dist/
+out/
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.cache
+
+# Test results & coverage
+TestResults/
+*.trx
+*.coverage
+*.coveragexml
+
+# NuGet packages
+*.nupkg
+*.snupkg
+packages/
+
+# Rider / VS Code user settings
+.idea/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+
+# OS files & logs
+Thumbs.db
+Desktop.ini
+*.log
+*.tmp
+*.lock

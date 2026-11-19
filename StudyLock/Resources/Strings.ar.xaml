@@ -1,0 +1,174 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!-- App Identity -->
+    <sys:String x:Key="AppTitle">StudyLock</sys:String>
+    <sys:String x:Key="AppSubtitle">بيئة التركيز الذكي وقفل المذاكرة والأطفال</sys:String>
+    <sys:String x:Key="ToggleLanguageLabel">English</sys:String>
+    <sys:String x:Key="ThemeDarkLabel">🌙 داكن</sys:String>
+    <sys:String x:Key="ThemeLightLabel">☀️ فاتح</sys:String>
+    <sys:String x:Key="ParentPinSettingsBtn">🔐 إعدادات بوابة الوالدين</sys:String>
+    <sys:String x:Key="DiscordBtnLabel">مجتمع الديسكورد</sys:String>
+    <sys:String x:Key="DiscordCreditsSub">الحقوق © A-2Q • انضم إلينا</sys:String>
+
+    <!-- Navigation Tabs -->
+    <sys:String x:Key="TabStudyMode">وضع المذاكرة</sys:String>
+    <sys:String x:Key="TabChildMode">وضع الطفل</sys:String>
+    <sys:String x:Key="TabStatistics">الإحصائيات والإنجاز</sys:String>
+
+    <!-- Study Mode Dashboard -->
+    <sys:String x:Key="StudyHeaderTitle">إعداد جلسة المذاكرة المقفلة</sys:String>
+    <sys:String x:Key="StudyHeaderDesc">حدّد موقعك التعليمي وملفات الـ PDF المرفقة ومستوى الحماية للتركيز الكامل دون أي مشتّتات.</sys:String>
+    <sys:String x:Key="StudyUrlLabel">رابط موقع المذاكرة الأساسي (إلزامي)</sys:String>
+    <sys:String x:Key="StudyUrlPlaceholder">https://e-learning.qiyas.sa</sys:String>
+    <sys:String x:Key="PreviewBeforeLockBtn">معاينة وتسجيل دخول</sys:String>
+    <sys:String x:Key="SavedStudySitesLabel">مواقعك المحفوظة</sys:String>
+    <sys:String x:Key="AddSiteBtn">+ إضافة موقع</sys:String>
+    <sys:String x:Key="AttachedPdfsLabel">ملفات PDF المرفقة (اختياري — تُفتح بجانب الموقع داخل القفل)</sys:String>
+    <sys:String x:Key="AddPdfBtn">+ إرفاق ملف PDF</sys:String>
+    <sys:String x:Key="NoPdfsAttached">لم يتم إرفاق أي ملفات PDF بعد — يمكنك إرفاق كتب التأسيس أو التجميعات لفتحها محلياً حتى بدون إنترنت.</sys:String>
+    <sys:String x:Key="DurationLabel">مدة الجلسة (الحد الأقصى 5 ساعات)</sys:String>
+    <sys:String x:Key="CustomMinutesLabel">أو مدة مخصصة (دقائق):</sys:String>
+    <sys:String x:Key="LockLevelLabel">مستوى القفل والحماية</sys:String>
+    <sys:String x:Key="StandardLevelTitle">المستوى الأول — قياسي (Standard)</sys:String>
+    <sys:String x:Key="StandardLevelDesc">قفل الشاشة بالكامل، تعتيم الشاشات الإضافية، حظر الاختصارات، بدون الحاجة لصلاحيات مسؤول. ينتهي بانتهاء الوقت أو بمخرج الطوارئ.</sys:String>
+    <sys:String x:Key="StrictLevelTitle">المستوى الثاني — صارم (Strict)</sys:String>
+    <sys:String x:Key="StrictLevelDesc">كل ميزات القياسي + رفع صلاحيات تلقائي لإغلاق مدير المهام + حفظ مشفّر للوقت المتبقي + إقلاع تلقائي إجباري بعد إعادة التشغيل.</sys:String>
+    <sys:String x:Key="StartStudyLockBtn">بدء جلسة المذاكرة وقفل الشاشة</sys:String>
+
+    <!-- Duration Chips -->
+    <sys:String x:Key="Chip5m">5 د</sys:String>
+    <sys:String x:Key="Chip15m">15 د</sys:String>
+    <sys:String x:Key="Chip30m">30 د</sys:String>
+    <sys:String x:Key="Chip1h">1 س</sys:String>
+    <sys:String x:Key="Chip2h">2 س</sys:String>
+    <sys:String x:Key="Chip3h">3 س</sys:String>
+    <sys:String x:Key="Chip4h">4 س</sys:String>
+    <sys:String x:Key="Chip5h">5 س</sys:String>
+
+    <!-- Child Mode Dashboard -->
+    <sys:String x:Key="ChildHeaderTitle">بيئة الطفل الآمنة</sys:String>
+    <sys:String x:Key="ChildHeaderDesc">اختر موقعاً مناسباً للطفل وحدد مدة الاستخدام. لن يتمكن الطفل من الخروج للمواقع الخارجية أو إغلاق التطبيق بدون بوابة الوالدين.</sys:String>
+    <sys:String x:Key="ChildSitesGridLabel">اختر الموقع المسموح للطفل</sys:String>
+    <sys:String x:Key="AddChildSiteBtn">+ إضافة موقع جديد</sys:String>
+    <sys:String x:Key="ChildDurationLabel">مدة اللعب / المشاهدة</sys:String>
+    <sys:String x:Key="StartChildLockBtn">تفعيل وضع الطفل وقفل الجهاز</sys:String>
+
+    <!-- Statistics Tab -->
+    <sys:String x:Key="StatsHeaderTitle">الإحصائيات وسجل الإنجاز</sys:String>
+    <sys:String x:Key="StatsHeaderDesc">تابع تقدمك اليومي والأسبوعي، متوسط استجابتك للتحقق، واستعرض ملاحظات جلساتك السابقة.</sys:String>
+    <sys:String x:Key="StatTodayHours">ساعات اليوم</sys:String>
+    <sys:String x:Key="StatWeekHours">هذا الأسبوع</sys:String>
+    <sys:String x:Key="StatTotalHours">الإجمالي الكلي</sys:String>
+    <sys:String x:Key="StatAvgAfk">متوسط الاستجابة</sys:String>
+    <sys:String x:Key="SessionHistoryTitle">سجل الجلسات المكتملة</sys:String>
+    <sys:String x:Key="NoHistoryYet">لا توجد جلسات مسجلة حتى الآن. ابدأ أول جلسة مذاكرة لتظهر إنجازاتك هنا!</sys:String>
+    <sys:String x:Key="ColDate">التاريخ</sys:String>
+    <sys:String x:Key="ColSite">الموقع</sys:String>
+    <sys:String x:Key="ColDuration">المدة المنجزة</sys:String>
+    <sys:String x:Key="ColAfkSpeed">سرعة التحقق</sys:String>
+    <sys:String x:Key="ColStatus">الحالة</sys:String>
+    <sys:String x:Key="ColNotes">الملاحظات</sys:String>
+    <sys:String x:Key="ViewNotesBtn">عرض الملاحظات</sys:String>
+    <sys:String x:Key="StatusCompleted">مكتملة</sys:String>
+    <sys:String x:Key="StatusEmergency">خروج طارئ</sys:String>
+
+    <!-- Study Lock Workspace -->
+    <sys:String x:Key="RemainingTimeLabel">الوقت المتبقي</sys:String>
+    <sys:String x:Key="NextCheckLabel">التحقق القادم</sys:String>
+    <sys:String x:Key="PauseTimerBtn">⏸ إيقاف مؤقت</sys:String>
+    <sys:String x:Key="ResumeTimerBtn">▶ استئناف المذاكرة</sys:String>
+    <sys:String x:Key="PausedBadge">متوقف مؤقتاً — بدون عقوبة</sys:String>
+    <sys:String x:Key="SplitViewBtn">◫ تقسيم الشاشة</sys:String>
+    <sys:String x:Key="SingleViewBtn">▢ عرض كامل</sys:String>
+    <sys:String x:Key="QuickNotesBtn">📝 ملاحظات</sys:String>
+    <sys:String x:Key="CalculatorBtn">🧮 حاسبة</sys:String>
+    <sys:String x:Key="WifiBtn">📶 Wi-Fi</sys:String>
+    <sys:String x:Key="EmergencyExitBtn">خروج طارئ</sys:String>
+    <sys:String x:Key="GraceBannerText">فترة التراجع للتأكد من فتح الموقع بشكل سليم قبل إحكام القفل:</sys:String>
+    <sys:String x:Key="CancelStartBtn">إلغاء البدء</sys:String>
+    <sys:String x:Key="LockNowBtn">تثبيت القفل الآن</sys:String>
+    <sys:String x:Key="AntiAfkBannerTitle">تحقق إثبات الوجود (كل 15 دقيقة)</sys:String>
+    <sys:String x:Key="AntiAfkBannerActive">هل ما زلت تذاكر؟ اضغط الزر خلال المهلة حتى لا يتجمد المؤقت:</sys:String>
+    <sys:String x:Key="AntiAfkBannerFrozen">تم تجميد المؤقت مؤقتاً (بدون أي عقوبة) لعدم الاستجابة — اضغط الزر لاستئناف العدّ:</sys:String>
+    <sys:String x:Key="IAmStudyingBtn">✓ أنا أذاكر الآن</sys:String>
+    <sys:String x:Key="BlockedDomainToast">تم حظر الانتقال لموقع خارج نطاق المذاكرة المحدد.</sys:String>
+    <sys:String x:Key="LeftPaneLabel">الجهة اليمنى:</sys:String>
+    <sys:String x:Key="RightPaneLabel">الجهة اليسرى:</sys:String>
+    <sys:String x:Key="SessionCompletedTitle">أحسنت! اكتملت جلسة المذاكرة بنجاح 🎉</sys:String>
+    <sys:String x:Key="SessionCompletedDesc">تم تسجيل إنجازك وحفظ ملاحظاتك في تبويب الإحصائيات. يمكنك الآن العودة إلى لوحة التحكم.</sys:String>
+    <sys:String x:Key="ReturnToDashboardBtn">العودة للوحة التحكم</sys:String>
+
+    <!-- Child Lock Workspace -->
+    <sys:String x:Key="ChildBackBtn">رجوع</sys:String>
+    <sys:String x:Key="ChildHomeBtn">الرئيسية</sys:String>
+    <sys:String x:Key="ChildParentExitBtn">🔒 خروج الوالدين</sys:String>
+    <sys:String x:Key="ChildTimeUpTitle">انتهى وقت الجهاز!</sys:String>
+    <sys:String x:Key="ChildTimeUpSubtitle">يرجى تسليمه لولي الأمر لفتح الشاشة.</sys:String>
+    <sys:String x:Key="ChildUnlockParentBtn">فتح عبر بوابة الوالدين</sys:String>
+
+    <!-- Blackout Screen -->
+    <sys:String x:Key="BlackoutTitle">StudyLock</sys:String>
+    <sys:String x:Key="BlackoutSubtitle">الشاشة الإضافية معتمة تلقائياً لضمان التركيز</sys:String>
+
+    <!-- Parent Gate Dialog -->
+    <sys:String x:Key="ParentGateTitle">بوابة خروج الوالدين</sys:String>
+    <sys:String x:Key="ParentGateMathSubtitle">أجب عن المسألة الحسابية التالية لإغلاق وضع الطفل:</sys:String>
+    <sys:String x:Key="ParentGatePinSubtitle">أدخل الرمز السري للوالدين (PIN) لإغلاق وضع الطفل:</sys:String>
+    <sys:String x:Key="ParentGateVerifyBtn">تأكيد وفتح القفل</sys:String>
+    <sys:String x:Key="ParentGateCancelBtn">إلغاء</sys:String>
+    <sys:String x:Key="ParentGateWrongAnswer">إجابة غير صحيحة! المحاولات المتبقية قبل التجميد:</sys:String>
+    <sys:String x:Key="ParentGateLockedOut">تم تعطيل الإدخال لمدة دقيقتين لحماية البوابة من التخمين. الوقت المتبقي:</sys:String>
+
+    <!-- Emergency Exit Dialog -->
+    <sys:String x:Key="EmergencyTitle">مخرج الطوارئ — تأكيد الإلغاء</sys:String>
+    <sys:String x:Key="EmergencyDesc">للخروج الطارئ قبل انتهاء الجلسة، اكتب السلسلة العشوائية التالية (55 رمزاً) بدقة حرفاً بحرف. النسخ واللصق معطلان تماماً.</sys:String>
+    <sys:String x:Key="EmergencyInputPlaceholder">اكتب السلسلة كاملة هنا بدون لصق...</sys:String>
+    <sys:String x:Key="EmergencyConfirmBtn">تأكيد الخروج الطارئ</sys:String>
+    <sys:String x:Key="EmergencyBackBtn">العودة للمذاكرة</sys:String>
+    <sys:String x:Key="EmergencyPasteBlocked">اللصق معطّل في مخرج الطوارئ!</sys:String>
+
+    <!-- Preview Browser -->
+    <sys:String x:Key="PreviewTitle">معاينة الموقع وتسجيل الدخول قبل القفل</sys:String>
+    <sys:String x:Key="PreviewHint">سجّل دخولك الآن وتأكد أن صفحتك جاهزة — ستُحفظ جلسة الدخول تلقائياً عند بدء القفل.</sys:String>
+    <sys:String x:Key="PreviewConfirmStartBtn">تأكيد وبدء القفل الآن</sys:String>
+    <sys:String x:Key="PreviewCloseBtn">إغلاق والعودة</sys:String>
+
+    <!-- Floating Tools -->
+    <sys:String x:Key="NotesTitle">مسودة الملاحظات السريعة</sys:String>
+    <sys:String x:Key="NotesAutoSaveHint">يتم الحفظ تلقائياً وربط الملاحظات بسجل هذه الجلسة</sys:String>
+    <sys:String x:Key="CalcTitle">الآلة الحاسبة</sys:String>
+    <sys:String x:Key="WifiTitle">إعدادات شبكة Wi-Fi المدمجة</sys:String>
+    <sys:String x:Key="WifiRefreshBtn">تحديث الشبكات</sys:String>
+    <sys:String x:Key="WifiConnectBtn">اتصال</sys:String>
+    <sys:String x:Key="WifiPasswordPrompt">كلمة مرور الشبكة:</sys:String>
+    <sys:String x:Key="WifiConnectedBadge">متصل</sys:String>
+    <sys:String x:Key="WifiScanning">جاري البحث عن شبكات Wi-Fi القريبة...</sys:String>
+
+    <!-- Dialogs & Validation -->
+    <sys:String x:Key="AddPresetTitle">إضافة موقع جديد</sys:String>
+    <sys:String x:Key="EditPresetTitle">تعديل الموقع</sys:String>
+    <sys:String x:Key="PresetNameLabel">اسم الموقع</sys:String>
+    <sys:String x:Key="PresetUrlLabel">رابط الموقع (URL)</sys:String>
+    <sys:String x:Key="PresetIconLabel">الأيقونة</sys:String>
+    <sys:String x:Key="PresetColorLabel">لون البطاقة</sys:String>
+    <sys:String x:Key="SaveBtn">حفظ</sys:String>
+    <sys:String x:Key="CancelBtn">إلغاء</sys:String>
+    <sys:String x:Key="DeleteBtn">حذف</sys:String>
+    <sys:String x:Key="CopyBtn">نسخ</sys:String>
+    <sys:String x:Key="ExportTxtBtn">تصدير كملف نصي</sys:String>
+    <sys:String x:Key="CloseBtn">إغلاق</sys:String>
+    <sys:String x:Key="InvalidUrlError">يرجى إدخال رابط موقع إلكتروني صحيح (مثل: https://example.com).</sys:String>
+    <sys:String x:Key="SelectChildSiteError">يرجى اختيار موقع من القائمة للطفل أولاً.</sys:String>
+    <sys:String x:Key="InvalidDurationError">يرجى اختيار مدة صحيحة بين 1 و 300 دقيقة (5 ساعات كحد أقصى).</sys:String>
+    <sys:String x:Key="UacDeclinedError">لم يتم منح صلاحيات المسؤول المطلوبة للوضع الصارم. يمكنك المتابعة بالمستوى القياسي أو إعادة المحاولة.</sys:String>
+    <sys:String x:Key="PinSettingsTitle">إعدادات بوابة الوالدين</sys:String>
+    <sys:String x:Key="PinSettingsDesc">افتراضياً تعتمد بوابة الوالدين على مسائل العشرات والخمسات السهلة. يمكنك تفعيل رمز PIN سري إضافي (4 إلى 8 أرقام) للأطفال الأكبر سناً.</sys:String>
+    <sys:String x:Key="EnablePinCheckbox">تفعيل الرمز السري (PIN) بدلاً من المسألة الحسابية</sys:String>
+    <sys:String x:Key="NewPinLabel">الرمز السري الجديد (4–8 أرقام):</sys:String>
+    <sys:String x:Key="ConfirmPinLabel">تأكيد الرمز السري:</sys:String>
+    <sys:String x:Key="PinValidationError">يجب أن يتكون الرمز من 4 إلى 8 أرقام ومتطابق في الحقلين.</sys:String>
+    <sys:String x:Key="HoursUnit">ساعة</sys:String>
+    <sys:String x:Key="SecondsUnit">ثانية</sys:String>
+</ResourceDictionary>
