@@ -5,6 +5,17 @@
 </p>
 
 <p align="center">
+  <a href="https://github.com/A-2Q/StudyLock/releases/tag/v1.0.0">
+    <img src="https://img.shields.io/badge/Tag-v1.0.0-10B981?style=for-the-badge&logo=github&logoColor=white" alt="Release v1.0.0" />
+  </a>
+  <img src="https://img.shields.io/badge/Platform-Android%206.0+-3DDC84?style=for-the-badge&logo=android&logoColor=white" alt="Android 6.0+" />
+  <img src="https://img.shields.io/badge/Flutter-3.22-02569B?style=for-the-badge&logo=flutter&logoColor=white" alt="Flutter 3.22" />
+  <a href="../LICENSE">
+    <img src="https://img.shields.io/badge/License-Apache_2.0-F59E0B?style=for-the-badge&logo=apache&logoColor=white" alt="Apache 2.0" />
+  </a>
+</p>
+
+<p align="center">
   <strong>تطبيق المذاكرة المقفلة بدون مشتتات لنظام أندرويد (تطابق كامل 100% مع نسخة الكمبيوتر)</strong><br>
   <em>Distraction-free Kiosk Study & Child Safe Environment for Android</em>
 </p>
@@ -15,7 +26,7 @@
 
 1. **التقسيم الرأسي للشاشة (Vertical Split View):**
    - نصف علوي لموقع المذاكرة عبر محرك ويب معزول (`flutter_inappwebview`).
-   - نصف سفلي لملفات الـ PDF المحلية (`pdfrx`) مع شريط تبويبات عند تعدد الملفات.
+   - نصف سفلي لملفات الـ PDF المحلية (`syncfusion_flutter_pdfviewer`) مع شريط تبويبات عند تعدد الملفات.
    - مقبض سحب أوسط (`VerticalSplitView`) لتعديل الحجم مع نقر مزدوج للضبط التلقائي (50/50).
 
 2. **إغلاق الثغرات الأمنية في أندرويد (System Loophole Mitigations):**

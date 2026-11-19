@@ -5,11 +5,29 @@
 <h1 align="center">StudyLock</h1>
 
 <p align="center">
+  <a href="https://github.com/A-2Q/StudyLock/releases/tag/v1.0.0">
+    <img src="https://img.shields.io/badge/Tag-v1.0.0-10B981?style=for-the-badge&logo=github&logoColor=white" alt="Release Tag v1.0.0" />
+  </a>
+  <a href="https://github.com/A-2Q/StudyLock/releases">
+    <img src="https://img.shields.io/badge/Platform-Windows%20%7C%20Android-3B82F6?style=for-the-badge&logo=android&logoColor=white" alt="Platforms" />
+  </a>
+  <a href="LICENSE">
+    <img src="https://img.shields.io/badge/License-Apache_2.0-F59E0B?style=for-the-badge&logo=apache&logoColor=white" alt="Apache License 2.0" />
+  </a>
   <a href="https://discord.gg/PufJHjaAKJ">
     <img src="https://img.shields.io/badge/Discord-Join%20Community-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Discord Server" />
   </a>
-  <a href="LICENSE">
-    <img src="https://img.shields.io/badge/License-Apache_2.0-F59E0B?style=for-the-badge" alt="Apache License 2.0" />
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/.NET%208-WPF-512BD4?style=flat-square&logo=dotnet&logoColor=white" alt=".NET 8 WPF" />
+  <img src="https://img.shields.io/badge/Flutter-3.22-02569B?style=flat-square&logo=flutter&logoColor=white" alt="Flutter" />
+  <img src="https://img.shields.io/badge/C%23-239120?style=flat-square&logo=csharp&logoColor=white" alt="C#" />
+  <img src="https://img.shields.io/badge/Dart-0175C2?style=flat-square&logo=dart&logoColor=white" alt="Dart" />
+  <img src="https://img.shields.io/badge/Kotlin-7F52FF?style=flat-square&logo=kotlin&logoColor=white" alt="Kotlin" />
+  <img src="https://img.shields.io/badge/Tests-15%2F15%20Passing-10B981?style=flat-square&logo=checkmarx&logoColor=white" alt="Tests" />
+  <a href="https://github.com/A-2Q">
+    <img src="https://img.shields.io/badge/Author-A--2Q-181717?style=flat-square&logo=github&logoColor=white" alt="Author A-2Q" />
   </a>
 </p>
 
