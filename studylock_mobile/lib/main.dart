@@ -11,10 +11,12 @@ import 'services/storage_service.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // Enforce portrait mode primary for mobile focus & lock stability
+  // Allow both portrait and landscape orientations across phones, foldables, and tablets
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
+    DeviceOrientation.landscapeLeft,
+    DeviceOrientation.landscapeRight,
   ]);
 
   final storageService = await StorageService.initialize();

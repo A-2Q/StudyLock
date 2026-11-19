@@ -52,9 +52,18 @@ android {
         versionName flutterVersionName
     }
 
+    signingConfigs {
+        release {
+            storeFile file('studylock-release.jks')
+            storePassword 'studylock2026'
+            keyAlias 'studylock'
+            keyPassword 'studylock2026'
+        }
+    }
+
     buildTypes {
         release {
-            signingConfig signingConfigs.debug
+            signingConfig signingConfigs.release
             minifyEnabled false
             shrinkResources false
         }

@@ -203,14 +203,19 @@ class _HomeSetupScreenState extends State<HomeSetupScreen> {
           ],
         ),
       ),
-      body: IndexedStack(
-        index: _currentTabIndex,
-        children: [
-          _buildStudyTab(l10n),
-          _buildChildTab(l10n),
-          _buildAnalyticsTab(l10n),
-          _buildSettingsTab(l10n),
-        ],
+      body: Center(
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 820),
+          child: IndexedStack(
+            index: _currentTabIndex,
+            children: [
+              _buildStudyTab(l10n),
+              _buildChildTab(l10n),
+              _buildAnalyticsTab(l10n),
+              _buildSettingsTab(l10n),
+            ],
+          ),
+        ),
       ),
       bottomNavigationBar: Container(
         decoration: const BoxDecoration(
@@ -548,8 +553,8 @@ class _HomeSetupScreenState extends State<HomeSetupScreen> {
           GridView.builder(
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: MediaQuery.of(context).size.width >= 600 ? 3 : 2,
               crossAxisSpacing: 12,
               mainAxisSpacing: 12,
               childAspectRatio: 1.6,

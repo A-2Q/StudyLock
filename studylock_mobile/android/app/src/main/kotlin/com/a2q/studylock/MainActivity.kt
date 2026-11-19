@@ -9,7 +9,6 @@ import android.os.Bundle
 import android.os.PowerManager
 import android.provider.Settings
 import android.view.KeyEvent
-import android.view.View
 import android.view.WindowManager
 import androidx.annotation.NonNull
 import androidx.core.view.WindowCompat
@@ -23,7 +22,6 @@ class MainActivity : FlutterActivity() {
     private val CHANNEL = "com.a2q.studylock/kiosk"
     private var isKioskActive = false
     private var isStrictMode = false
-    private var lockManager: KioskLockManager? = null
     private var wakeLock: PowerManager.WakeLock? = null
 
     companion object {
@@ -34,7 +32,6 @@ class MainActivity : FlutterActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         activeInstance = this
-        lockManager = KioskLockManager(this)
 
         if (intent.getBooleanExtra("reboot_recovery", false)) {
             // Re-arm lock from boot receiver
@@ -63,17 +60,15 @@ class MainActivity : FlutterActivity() {
                     result.success(isKioskActive)
                 }
                 "checkOverlayPermission" -> {
-                    result.success(checkOverlayPermission())
+                    result.success(true)
                 }
                 "requestOverlayPermission" -> {
-                    requestOverlayPermission()
                     result.success(true)
                 }
                 "checkAccessibilityPermission" -> {
-                    result.success(checkAccessibilityPermission())
+                    result.success(true)
                 }
                 "requestAccessibilityPermission" -> {
-                    requestAccessibilityPermission()
                     result.success(true)
                 }
                 "checkBatteryOptimization" -> {
@@ -107,22 +102,21 @@ class MainActivity : FlutterActivity() {
         enableKioskMode(strict)
 
         // Start Foreground Watchdog Service
-        val serviceIntent = Intent(this, KioskForegroundService::class.java).apply {
-            putExtra("strict_mode", strict)
-        }
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            startForegroundService(serviceIntent)
-        } else {
-            startService(serviceIntent)
+        try {
+            val serviceIntent = Intent(this, KioskForegroundService::class.java).apply {
+                putExtra("strict_mode", strict)
+            }
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                startForegroundService(serviceIntent)
+            } else {
+                startService(serviceIntent)
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
         }
 
         // Acquire WakeLock to prevent aggressive sleep
         acquireWakeLock()
-
-        // Enable touch shield on top edge to block notification shade
-        if (checkOverlayPermission()) {
-            lockManager?.attachNotificationShield()
-        }
     }
 
     private fun stopKioskLock() {
@@ -133,28 +127,29 @@ class MainActivity : FlutterActivity() {
         disableKioskMode()
 
         // Stop Foreground Service
-        val serviceIntent = Intent(this, KioskForegroundService::class.java)
-        stopService(serviceIntent)
+        try {
+            val serviceIntent = Intent(this, KioskForegroundService::class.java)
+            stopService(serviceIntent)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
 
         // Release WakeLock
         releaseWakeLock()
-
-        // Remove top touch shield
-        lockManager?.detachNotificationShield()
     }
 
     private fun enableKioskMode(strict: Boolean) {
         runOnUiThread {
-            // Apply sticky immersive mode to hide navigation bar & status bar
-            val windowInsetsController = WindowCompat.getInsetsController(window, window.decorView)
-            windowInsetsController.systemBarsBehavior =
-                WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
-            windowInsetsController.hide(WindowInsetsCompat.Type.systemBars())
-
-            window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
-
-            // Attempt Native Lock Task Mode (Kiosk pinning)
             try {
+                // Apply sticky immersive mode to hide navigation bar & status bar
+                val windowInsetsController = WindowCompat.getInsetsController(window, window.decorView)
+                windowInsetsController.systemBarsBehavior =
+                    WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+                windowInsetsController.hide(WindowInsetsCompat.Type.systemBars())
+
+                window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
+
+                // Native Lock Task Mode (Official Google Screen Pinning / Kiosk API)
                 val am = getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                     if (am.lockTaskModeState == ActivityManager.LOCK_TASK_MODE_NONE) {
@@ -164,7 +159,6 @@ class MainActivity : FlutterActivity() {
                     startLockTask()
                 }
             } catch (e: Exception) {
-                // Pinning might require Device Owner or user confirmation, fallback gracefully
                 e.printStackTrace()
             }
         }
@@ -172,11 +166,11 @@ class MainActivity : FlutterActivity() {
 
     private fun disableKioskMode() {
         runOnUiThread {
-            val windowInsetsController = WindowCompat.getInsetsController(window, window.decorView)
-            windowInsetsController.show(WindowInsetsCompat.Type.systemBars())
-            window.clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
-
             try {
+                val windowInsetsController = WindowCompat.getInsetsController(window, window.decorView)
+                windowInsetsController.show(WindowInsetsCompat.Type.systemBars())
+                window.clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
+
                 val am = getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                     if (am.lockTaskModeState != ActivityManager.LOCK_TASK_MODE_NONE) {
@@ -192,20 +186,28 @@ class MainActivity : FlutterActivity() {
     }
 
     private fun acquireWakeLock() {
-        if (wakeLock == null) {
-            val powerManager = getSystemService(Context.POWER_SERVICE) as PowerManager
-            wakeLock = powerManager.newWakeLock(
-                PowerManager.PARTIAL_WAKE_LOCK,
-                "StudyLock::KioskWakeLock"
-            )
-            wakeLock?.acquire(12 * 60 * 60 * 1000L) // 12 hours timeout guard
+        try {
+            if (wakeLock == null) {
+                val powerManager = getSystemService(Context.POWER_SERVICE) as PowerManager
+                wakeLock = powerManager.newWakeLock(
+                    PowerManager.PARTIAL_WAKE_LOCK,
+                    "StudyLock::KioskWakeLock"
+                )
+                wakeLock?.acquire(12 * 60 * 60 * 1000L) // 12 hours timeout guard
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
         }
     }
 
     private fun releaseWakeLock() {
-        if (wakeLock != null && wakeLock?.isHeld == true) {
-            wakeLock?.release()
-            wakeLock = null
+        try {
+            if (wakeLock != null && wakeLock?.isHeld == true) {
+                wakeLock?.release()
+                wakeLock = null
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
         }
     }
 
@@ -220,10 +222,14 @@ class MainActivity : FlutterActivity() {
     }
 
     private fun bringToFront() {
-        val intent = Intent(this, MainActivity::class.java).apply {
-            flags = Intent.FLAG_ACTIVITY_REORDER_TO_FRONT or Intent.FLAG_ACTIVITY_SINGLE_TOP
+        try {
+            val intent = Intent(this, MainActivity::class.java).apply {
+                flags = Intent.FLAG_ACTIVITY_REORDER_TO_FRONT or Intent.FLAG_ACTIVITY_SINGLE_TOP
+            }
+            startActivity(intent)
+        } catch (e: Exception) {
+            e.printStackTrace()
         }
-        startActivity(intent)
     }
 
     override fun onBackPressed() {
@@ -265,74 +271,40 @@ class MainActivity : FlutterActivity() {
     override fun onWindowFocusChanged(hasFocus: Boolean) {
         super.onWindowFocusChanged(hasFocus)
         if (isKioskActive && !hasFocus) {
-            // Close system dialogs and collapse status bar
-            val closeDialogs = Intent(Intent.ACTION_CLOSE_SYSTEM_DIALOGS)
-            sendBroadcast(closeDialogs)
-
             val windowInsetsController = WindowCompat.getInsetsController(window, window.decorView)
             windowInsetsController.hide(WindowInsetsCompat.Type.systemBars())
         }
     }
 
-    private fun checkOverlayPermission(): Boolean {
-        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            Settings.canDrawOverlays(this)
-        } else {
-            true
-        }
-    }
-
-    private fun requestOverlayPermission() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (!Settings.canDrawOverlays(this)) {
-                val intent = Intent(
-                    Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
-                    Uri.parse("package:$packageName")
-                ).apply {
-                    flags = Intent.FLAG_ACTIVITY_NEW_TASK
-                }
-                startActivity(intent)
-            }
-        }
-    }
-
-    private fun checkAccessibilityPermission(): Boolean {
-        val serviceName = "$packageName/${KioskAccessibilityService::class.java.canonicalName}"
-        val enabledServices = Settings.Secure.getString(
-            contentResolver,
-            Settings.Secure.ENABLED_ACCESSIBILITY_SERVICES
-        ) ?: return false
-        return enabledServices.contains(serviceName)
-    }
-
-    private fun requestAccessibilityPermission() {
-        val intent = Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS).apply {
-            flags = Intent.FLAG_ACTIVITY_NEW_TASK
-        }
-        startActivity(intent)
-    }
-
     private fun checkBatteryOptimization(): Boolean {
-        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            val powerManager = getSystemService(Context.POWER_SERVICE) as PowerManager
-            powerManager.isIgnoringBatteryOptimizations(packageName)
-        } else {
+        return try {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                val powerManager = getSystemService(Context.POWER_SERVICE) as PowerManager
+                powerManager.isIgnoringBatteryOptimizations(packageName)
+            } else {
+                true
+            }
+        } catch (e: Exception) {
             true
         }
     }
 
     private fun requestIgnoreBatteryOptimization() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            val powerManager = getSystemService(Context.POWER_SERVICE) as PowerManager
-            if (!powerManager.isIgnoringBatteryOptimizations(packageName)) {
-                val intent = Intent(
-                    Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS,
-                    Uri.parse("package:$packageName")
-                ).apply {
-                    flags = Intent.FLAG_ACTIVITY_NEW_TASK
+        try {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                val powerManager = getSystemService(Context.POWER_SERVICE) as PowerManager
+                if (!powerManager.isIgnoringBatteryOptimizations(packageName)) {
+                    val intent = Intent(
+                        Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS,
+                        Uri.parse("package:$packageName")
+                    ).apply {
+                        flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                    }
+                    startActivity(intent)
                 }
-                startActivity(intent)
             }
+        } catch (e: Exception) {
+            e.printStackTrace()
         }
     }
 
@@ -340,7 +312,6 @@ class MainActivity : FlutterActivity() {
         if (activeInstance == this) {
             activeInstance = null
         }
-        lockManager?.detachNotificationShield()
         releaseWakeLock()
         super.onDestroy()
     }
